@@ -93,7 +93,7 @@ public:
 };
 
 /**
- * PIVX RPC command dispatcher.
+ * PCIB RPC command dispatcher.
  */
 class CRPCTable
 {

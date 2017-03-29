@@ -2,7 +2,7 @@ Release Process
 ====================
 
 * update translations (ping wumpus, Diapolo or tcatm on IRC)
-* see https://github.com/pivx-project/pivx/blob/master/doc/translation_process.md#syncing-with-transifex
+* see https://github.com/pcib-project/pcib/blob/master/doc/translation_process.md#syncing-with-transifex
 
 * * *
 
@@ -29,11 +29,11 @@ Release Process
 
 ###perform gitian builds
 
- From a directory containing the pivx source, gitian-builder and gitian.sigs
+ From a directory containing the pcib source, gitian-builder and gitian.sigs
 
 	export SIGNER=(your gitian key)
 	export VERSION=(new version, e.g. 2.1.4.0)
-	pushd ./pivx
+	pushd ./pcib
 	git checkout v${VERSION}
 	popd
 	pushd ./gitian-builder
@@ -52,39 +52,39 @@ Release Process
 
  Or you can download it from our website;
  
- 	http://pivx-crypto.com/files/sdk/MacOSX10.7.sdk.tar.gz
+ 	http://pcib-crypto.com/files/sdk/MacOSX10.7.sdk.tar.gz
  	
  If you will be building the RPi2 binary as well, you will need this file in 'gitian-builder/inputs' folder
  
- 	http://pivx-crypto.com/files/sdk/raspberrypi-tools.tar.gz
+ 	http://pcib-crypto.com/files/sdk/raspberrypi-tools.tar.gz
  	
 ###Optional: Seed the Gitian sources cache
 
   By default, gitian will fetch source files as needed. For offline builds, they can be fetched ahead of time:
 
-	make -C ../pivx/depends download SOURCES_PATH=`pwd`/cache/common
+	make -C ../pcib/depends download SOURCES_PATH=`pwd`/cache/common
 
   Only missing files will be fetched, so this is safe to re-run for each build.
 
-###Build PIVX Core for Linux, Windows, and OS X:
+###Build PCIB Core for Linux, Windows, and OS X:
 
-	./bin/gbuild --commit pivx=v${VERSION} ../pivx/contrib/gitian-descriptors/gitian-linux.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../pivx/contrib/gitian-descriptors/gitian-linux.yml
-	mv build/out/pivx-*.tar.gz build/out/src/pivx-*.tar.gz ../
-	./bin/gbuild --commit pivx=v${VERSION} ../pivx/contrib/gitian-descriptors/gitian-win.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-win --destination ../gitian.sigs/ ../pivx/contrib/gitian-descriptors/gitian-win.yml
-	mv build/out/pivx-*.zip build/out/pivx-*.exe ../
-	./bin/gbuild --commit pivx=v${VERSION} ../pivx/contrib/gitian-descriptors/gitian-osx.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../pivx/contrib/gitian-descriptors/gitian-osx.yml
-	mv build/out/pivx-*-unsigned.tar.gz inputs/pivx-osx-unsigned.tar.gz
-	mv build/out/pivx-*.tar.gz build/out/pivx-*.dmg ../
+	./bin/gbuild --commit pcib=v${VERSION} ../pcib/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../pcib/contrib/gitian-descriptors/gitian-linux.yml
+	mv build/out/pcib-*.tar.gz build/out/src/pcib-*.tar.gz ../
+	./bin/gbuild --commit pcib=v${VERSION} ../pcib/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-win --destination ../gitian.sigs/ ../pcib/contrib/gitian-descriptors/gitian-win.yml
+	mv build/out/pcib-*.zip build/out/pcib-*.exe ../
+	./bin/gbuild --commit pcib=v${VERSION} ../pcib/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../pcib/contrib/gitian-descriptors/gitian-osx.yml
+	mv build/out/pcib-*-unsigned.tar.gz inputs/pcib-osx-unsigned.tar.gz
+	mv build/out/pcib-*.tar.gz build/out/pcib-*.dmg ../
 	popd
   Build output expected:
 
-  1. source tarball (pivx-${VERSION}.tar.gz)
-  2. linux 32-bit and 64-bit binaries dist tarballs (pivx-${VERSION}-linux[32|64].tar.gz)
-  3. windows 32-bit and 64-bit installers and dist zips (pivx-${VERSION}-win[32|64]-setup.exe, pivx-${VERSION}-win[32|64].zip)
-  4. OSX unsigned installer (pivx-${VERSION}-osx-unsigned.dmg)
+  1. source tarball (pcib-${VERSION}.tar.gz)
+  2. linux 32-bit and 64-bit binaries dist tarballs (pcib-${VERSION}-linux[32|64].tar.gz)
+  3. windows 32-bit and 64-bit installers and dist zips (pcib-${VERSION}-win[32|64]-setup.exe, pcib-${VERSION}-win[32|64].zip)
+  4. OSX unsigned installer (pcib-${VERSION}-osx-unsigned.dmg)
   5. Gitian signatures (in gitian.sigs/${VERSION}-<linux|win|osx-unsigned>/(your gitian key)/
 
 ###Next steps:
@@ -108,9 +108,9 @@ Commit your signature to gitian.sigs:
 	pushd ./gitian-builder
 	# Fetch the signature as instructed by Evan
 	cp signature.tar.gz inputs/
-	./bin/gbuild -i ../pivx/contrib/gitian-descriptors/gitian-osx-signer.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../pivx/contrib/gitian-descriptors/gitian-osx-signer.yml
-	mv build/out/pivx-osx-signed.dmg ../pivx-${VERSION}-osx.dmg
+	./bin/gbuild -i ../pcib/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../pcib/contrib/gitian-descriptors/gitian-osx-signer.yml
+	mv build/out/pcib-osx-signed.dmg ../pcib-${VERSION}-osx.dmg
 	popd
 
 Commit your signature for the signed OSX binary:

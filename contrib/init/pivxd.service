@@ -3,13 +3,13 @@ Description=Pivx's distributed currency daemon
 After=network.target
 
 [Service]
-User=pivx
-Group=pivx
+User=pcib
+Group=pcib
 
 Type=forking
-PIDFile=/var/lib/pivxd/pivxd.pid
-ExecStart=/usr/bin/pivxd -daemon -pid=/var/lib/pivxd/pivxd.pid \
--conf=/etc/pivx/pivx.conf -datadir=/var/lib/pivxd -disablewallet
+PIDFile=/var/lib/pcibd/pcibd.pid
+ExecStart=/usr/bin/pcibd -daemon -pid=/var/lib/pcibd/pcibd.pid \
+-conf=/etc/pcib/pcib.conf -datadir=/var/lib/pcibd -disablewallet
 
 Restart=always
 PrivateTmp=true

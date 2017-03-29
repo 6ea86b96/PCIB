@@ -1,9 +1,9 @@
 Sample configuration files for:
 
-SystemD: pivxd.service
-Upstart: pivxd.conf
-OpenRC:  pivxd.openrc
-         pivxd.openrcconf
+SystemD: pcibd.service
+Upstart: pcibd.conf
+OpenRC:  pcibd.openrc
+         pcibd.openrcconf
 
 have been made available to assist packagers in creating node packages here.
 

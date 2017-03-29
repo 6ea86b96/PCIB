@@ -1,4 +1,4 @@
-PIVX Core 2.1.6
+PCIB Core 2.1.6
 =====================
 
 Setup
@@ -7,46 +7,46 @@ Setup
 
 Running
 ---------------------
-The following are some helpful notes on how to run PIVX on your native platform.
+The following are some helpful notes on how to run PCIB on your native platform.
 
 ### Unix
 
-You need the Qt4 run-time libraries to run PIVX-Qt. On Debian or Ubuntu:
+You need the Qt4 run-time libraries to run PCIB-Qt. On Debian or Ubuntu:
 
 	sudo apt-get install libqtgui4
 
 Unpack the files into a directory and run:
 
-- bin/32/pivx-qt (GUI, 32-bit) or bin/32/pivxd (headless, 32-bit)
-- bin/64/pivx-qt (GUI, 64-bit) or bin/64/pivxd (headless, 64-bit)
+- bin/32/pcib-qt (GUI, 32-bit) or bin/32/pcibd (headless, 32-bit)
+- bin/64/pcib-qt (GUI, 64-bit) or bin/64/pcibd (headless, 64-bit)
 
 
 
 ### Windows
 
-Unpack the files into a directory, and then run pivx-qt.exe.
+Unpack the files into a directory, and then run pcib-qt.exe.
 
 ### OSX
 
-Drag PIVX-Qt to your applications folder, and then run PIVX-Qt.
+Drag PCIB-Qt to your applications folder, and then run PCIB-Qt.
 
 ### Need Help?
 
-* See the documentation at the [PIVX Wiki](https://en.bitcoin.it/wiki/Main_Page) ***TODO***
+* See the documentation at the [PCIB Wiki](https://en.bitcoin.it/wiki/Main_Page) ***TODO***
 for help and more information.
 * Ask for help on https://bitcointalk.org/index.php?topic=1262920.0
-* A new forum will be available soon on pivx-crypto.com
+* A new forum will be available soon on pcib-crypto.com
 
 Building
 ---------------------
-The following are developer notes on how to build PIVX on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build PCIB on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [OSX Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
 
 Development
 ---------------------
-The Pivx repo's [root README](https://github.com/pivx-crypto/pivx/blob/master/README.md) contains relevant information on the development process and automated testing.
+The Pivx repo's [root README](https://github.com/pcib-crypto/pcib/blob/master/README.md) contains relevant information on the development process and automated testing.
 
 - [Coding Guidelines](coding.md)
 - [Multiwallet Qt Development](multiwallet-qt.md)

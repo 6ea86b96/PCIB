@@ -1,2 +1,2 @@
-usr/local/bin/pivxd usr/bin
-usr/local/bin/pivx-cli usr/bin
+usr/local/bin/pcibd usr/bin
+usr/local/bin/pcib-cli usr/bin

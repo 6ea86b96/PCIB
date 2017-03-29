@@ -1,6 +1,6 @@
 Mac OS X Build Instructions and Notes
 ====================================
-This guide will show you how to build pivxd (headless client) for OSX.
+This guide will show you how to build pcibd (headless client) for OSX.
 
 Notes
 -----
@@ -58,19 +58,19 @@ The rest of these commands are run inside brew interactive mode:
 /private/tmp/berkeley-db4-UGpd0O $ exit
 ```
 
-After exiting, you'll get a warning that the install is keg-only, which means it wasn't symlinked to `/usr/local`.  You don't need it to link it to build pivx, but if you want to, here's how:
+After exiting, you'll get a warning that the install is keg-only, which means it wasn't symlinked to `/usr/local`.  You don't need it to link it to build pcib, but if you want to, here's how:
 
     $ brew link --force berkeley-db4
 
 
-### Building `pivxd`
+### Building `pcibd`
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone https://github.com/pivx-crypto/pivx.git
-        cd pivx
+        git clone https://github.com/pcib-crypto/pcib.git
+        cd pcib
 
-2.  Build pivxd:
+2.  Build pcibd:
 
         ./autogen.sh
         ./configure
@@ -80,7 +80,7 @@ After exiting, you'll get a warning that the install is keg-only, which means it
 
         make check
 
-4.  (Optional) You can also install pivxd to your path:
+4.  (Optional) You can also install pcibd to your path:
 
         make install
 
@@ -92,7 +92,7 @@ Download Qt Creator from http://www.qt.io/download/. Download the "community edi
 1. Make sure you installed everything through homebrew mentioned above 
 2. Do a proper ./configure --with-gui=qt5 --enable-debug
 3. In Qt Creator do "New Project" -> Import Project -> Import Existing Project
-4. Enter "pivx-qt" as project name, enter src/qt as location
+4. Enter "pcib-qt" as project name, enter src/qt as location
 5. Leave the file selection as it is
 6. Confirm the "summary page"
 7. In the "Projects" tab select "Manage Kits..."
@@ -102,11 +102,11 @@ Download Qt Creator from http://www.qt.io/download/. Download the "community edi
 
 Creating a release build
 ------------------------
-You can ignore this section if you are building `pivxd` for your own use.
+You can ignore this section if you are building `pcibd` for your own use.
 
-pivxd/pivx-cli binaries are not included in the pivx-Qt.app bundle.
+pcibd/pcib-cli binaries are not included in the pcib-Qt.app bundle.
 
-If you are building `pivxd` or `pivx-Qt` for others, your build machine should be set up
+If you are building `pcibd` or `pcib-Qt` for others, your build machine should be set up
 as follows for maximum compatibility:
 
 All dependencies should be compiled with these flags:
@@ -115,30 +115,30 @@ All dependencies should be compiled with these flags:
  -arch x86_64
  -isysroot $(xcode-select --print-path)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk
 
-Once dependencies are compiled, see release-process.md for how the pivx-Qt.app
+Once dependencies are compiled, see release-process.md for how the pcib-Qt.app
 bundle is packaged and signed to create the .dmg disk image that is distributed.
 
 Running
 -------
 
-It's now available at `./pivxd`, provided that you are still in the `src`
+It's now available at `./pcibd`, provided that you are still in the `src`
 directory. We have to first create the RPC configuration file, though.
 
-Run `./pivxd` to get the filename where it should be put, or just try these
+Run `./pcibd` to get the filename where it should be put, or just try these
 commands:
 
-    echo -e "rpcuser=pivxrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/PIVX/pivx.conf"
-    chmod 600 "/Users/${USER}/Library/Application Support/PIVX/pivx.conf"
+    echo -e "rpcuser=pcibrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/PCIB/pcib.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/PCIB/pcib.conf"
 
 The next time you run it, it will start downloading the blockchain, but it won't
 output anything while it's doing this. This process may take several hours;
 you can monitor its process by looking at the debug.log file, like this:
 
-    tail -f $HOME/Library/Application\ Support/PIVX/debug.log
+    tail -f $HOME/Library/Application\ Support/PCIB/debug.log
 
 Other commands:
 -------
 
-    ./pivxd -daemon # to start the pivx daemon.
-    ./pivx-cli --help  # for a list of command-line options.
-    ./pivx-cli help    # When the daemon is running, to get a list of RPC commands
+    ./pcibd -daemon # to start the pcib daemon.
+    ./pcib-cli --help  # for a list of command-line options.
+    ./pcib-cli help    # When the daemon is running, to get a list of RPC commands
